@@ -12,6 +12,14 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use("/api/student/", StudentRouter);
+app.get("/", (req, res) => {
+  try {
+    return res.status(200).send({ status: true, message: "Server is running" });
+  } catch (err) {
+    return res.status(500).send({ status: false, message: err.message });
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is up and running on PORT : ${PORT}`);
