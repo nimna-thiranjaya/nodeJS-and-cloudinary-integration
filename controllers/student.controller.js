@@ -6,7 +6,7 @@ const {
 const StudentRegister = async (req, res) => {
   try {
     const { fullName, age, grade } = req.body;
-
+    console.log(req.file.path);
     const data = await UploadToCloudinary(req.file.path, "Profile-Image");
 
     const dtudentData = {
@@ -31,4 +31,12 @@ const StudentRegister = async (req, res) => {
   }
 };
 
-module.exports = { StudentRegister };
+const UploadFile = async (req, res) => {
+  const { imageUri } = req.body;
+
+  await Student.create({ imageUri: imageUri });
+
+  return res.status(200).send({ status: true, message: "image added" });
+};
+
+module.exports = { StudentRegister, UploadFile };
