@@ -27,7 +27,7 @@ const StudentRegister = async (req, res) => {
         .send({ status: true, message: "Somthing went wrong" });
     }
   } catch (err) {
-    return res.status(400).send({ status: true, message: err.message });
+    return res.status(400).send({ status: false, message: err });
   }
 };
 
