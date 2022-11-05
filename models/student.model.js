@@ -3,15 +3,12 @@ const mongoose = require("mongoose");
 const studentSchema = new mongoose.Schema({
   fullName: {
     type: String,
-    required: true,
   },
   age: {
     type: Number,
-    required: true,
   },
   grade: {
     type: Number,
-    required: true,
   },
   publicID: {
     type: String,
